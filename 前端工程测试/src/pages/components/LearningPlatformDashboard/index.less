@@ -1,0 +1,805 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  position: relative;
+  padding-right: 80px; /* 为右侧工具栏留出空间 */
+}
+
+/* 顶部导航栏样式 */
+.headerContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 16px 24px;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  z-index: 100;
+}
+
+.logoContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-right: 48px;
+}
+
+.logoIcon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #8B0000 0%, #A52A2A 100%);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logoIcon::before {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #FF6B6B 0%, #FF8E8E 100%);
+}
+
+.logoText {
+  margin-left: 12px;
+  color: #8B0000;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.navMenu {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 32px;
+  flex: 1;
+}
+
+.navItem, .navItemActive {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  font-size: 16px;
+  cursor: pointer;
+  transition: color 0.3s;
+  padding: 8px 12px;
+  border-radius: 4px;
+}
+
+.navItem {
+  color: #666;
+}
+
+.navItem:hover {
+  color: #8B0000;
+  background-color: #f8f8f8;
+}
+
+.navItemActive {
+  color: #8B0000;
+  font-weight: 500;
+  background-color: #fff5f5;
+}
+
+.navIcon {
+  font-size: 18px;
+}
+
+.searchContainer {
+  margin: 0 24px;
+}
+
+.searchInput {
+  border-radius: 16px;
+  width: 200px;
+}
+
+.headerIcons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+}
+
+.iconItem {
+  font-size: 20px;
+  color: #666;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.iconItem:hover {
+  color: #8B0000;
+}
+
+.userAvatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #8B0000 0%, #A52A2A 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.userIcon {
+  font-size: 20px;
+  color: white;
+}
+
+/* 主要内容区域样式 */
+.mainContent {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  gap: 32px;
+}
+
+/* Banner区域样式 */
+.bannerContainer {
+  display: flex;
+  flex-direction: row;
+  border-radius: 12px;
+  overflow: hidden;
+  height: 320px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.bannerLeft {
+  flex: 1;
+  background: linear-gradient(135deg, #8B0000 0%, #A52A2A 100%);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+}
+
+.bannerContent {
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+
+.bannerTitle {
+  font-size: 18px;
+  margin-bottom: 8px;
+  opacity: 0.9;
+}
+
+.bannerSubtitle {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.bannerDescription {
+  font-size: 18px;
+  opacity: 0.9;
+}
+
+.qrCodeContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.qrCode {
+  width: 100px;
+  height: 100px;
+  background-color: white;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  background-image: linear-gradient(45deg, #ccc 25%, transparent 25%), 
+                    linear-gradient(-45deg, #ccc 25%, transparent 25%), 
+                    linear-gradient(45deg, transparent 75%, #ccc 75%), 
+                    linear-gradient(-45deg, transparent 75%, #ccc 75%);
+  background-size: 20px 20px;
+  background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+}
+
+.qrCodeText {
+  color: white;
+  font-size: 14px;
+}
+
+.bannerRight {
+  flex: 1;
+  background: linear-gradient(135deg, #000 0%, #333 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.bannerRight::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.05) 0%, transparent 20%),
+                    radial-gradient(circle at 90% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 20%),
+                    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.03) 0%, transparent 30%);
+}
+
+.bannerRightContent {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  padding: 0 40px;
+  color: white;
+}
+
+.bannerMainTitle {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.bannerMainSubtitle {
+  font-size: 20px;
+  margin-bottom: 32px;
+  opacity: 0.9;
+}
+
+.bannerPointer {
+  width: 60px;
+  height: 60px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M7 17l9.2-9.2M7 7h10v10'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  align-self: flex-start;
+}
+
+/* 推荐课程样式 */
+.recommendedCourses {
+  background-color: white;
+  border-radius: 12px;
+  padding: 32px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.sectionTitle {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 24px 0;
+  text-align: center;
+}
+
+.courseList {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.courseCard {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s, box-shadow 0.3s;
+  background: white;
+}
+
+.courseCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+}
+
+.courseImageContainer {
+  height: 160px;
+  overflow: hidden;
+}
+
+.courseImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.courseCard:hover .courseImage {
+  transform: scale(1.05);
+}
+
+.courseContent {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.courseTitle {
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.courseDescription {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+  line-height: 1.5;
+  flex: 1;
+}
+
+.courseButton {
+  align-self: flex-end;
+  border-radius: 20px;
+  padding: 6px 16px;
+  font-size: 14px;
+  color: #8B0000;
+  border-color: #8B0000;
+}
+
+/* 热门直播样式 */
+.hotLiveSection {
+  background-color: white;
+  border-radius: 12px;
+  padding: 32px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.liveTimeline {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.timelineItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  min-width: 120px;
+}
+
+.timelineDate {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.timelineDot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #d9d9d9;
+  border: 3px solid white;
+  margin-bottom: 8px;
+  z-index: 2;
+}
+
+.activeDot {
+  background-color: #8B0000;
+}
+
+.timelineLine {
+  position: absolute;
+  top: 11px;
+  left: 50%;
+  right: -50%;
+  height: 2px;
+  background-color: #d9d9d9;
+  z-index: 1;
+}
+
+.liveList {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.liveCard {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s, box-shadow 0.3s;
+  background: white;
+}
+
+.liveCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+}
+
+.liveImageContainer {
+  position: relative;
+  height: 160px;
+  overflow: hidden;
+}
+
+.liveImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.liveCard:hover .liveImage {
+  transform: scale(1.05);
+}
+
+.liveTag {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background-color: #8B0000;
+  color: white;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.liveStatus {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.replayStatus {
+  background-color: #8B0000;
+}
+
+.liveContent {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.liveTitle {
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  margin: 0;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.liveInfo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.liveTime {
+  font-size: 14px;
+  color: #666;
+}
+
+/* 右侧悬浮工具栏 */
+.floatingToolbar {
+  position: fixed;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  z-index: 100;
+}
+
+.toolbarItem, .toolbarItemAI {
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s;
+}
+
+.toolbarItem {
+  background-color: white;
+}
+
+.toolbarItemAI {
+  background: linear-gradient(135deg, #8B0000 0%, #A52A2A 100%);
+}
+
+.toolbarItem:hover, .toolbarItemAI:hover {
+  transform: scale(1.1);
+}
+
+.toolbarIcon {
+  font-size: 24px;
+  margin-bottom: 4px;
+}
+
+.toolbarItem .toolbarIcon {
+  color: #8B0000;
+}
+
+.toolbarItemAI .toolbarIcon {
+  color: white;
+}
+
+.toolbarText {
+  font-size: 12px;
+}
+
+.toolbarItem .toolbarText {
+  color: #8B0000;
+}
+
+.toolbarItemAI .toolbarText {
+  color: white;
+}
+
+/* 响应式设计 */
+@media screen and (max-width: 1200px) {
+  .liveList {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .courseList {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .bannerContainer {
+    flex-direction: column;
+    height: auto;
+  }
+  
+  .bannerLeft, .bannerRight {
+    padding: 24px;
+  }
+  
+  .liveList {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .courseList {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .headerContainer {
+    flex-wrap: wrap;
+    padding: 12px;
+  }
+  
+  .logoContainer {
+    margin-right: 24px;
+  }
+  
+  .navMenu {
+    gap: 16px;
+    margin: 12px 0;
+    order: 3;
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .navItem, .navItemActive {
+    font-size: 14px;
+    padding: 6px 8px;
+  }
+  
+  .searchContainer {
+    margin: 0 12px;
+  }
+  
+  .searchInput {
+    width: 150px;
+  }
+  
+  .mainContent {
+    padding: 16px;
+  }
+  
+  .recommendedCourses, .hotLiveSection {
+    padding: 24px 16px;
+  }
+  
+  .sectionTitle {
+    font-size: 20px;
+  }
+  
+  .liveList, .courseList {
+    gap: 16px;
+  }
+  
+  .floatingToolbar {
+    right: 12px;
+  }
+  
+  .toolbarItem, .toolbarItemAI {
+    width: 56px;
+    height: 56px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .wrapper {
+    padding-right: 70px;
+  }
+  
+  .headerContainer {
+    padding: 8px;
+  }
+  
+  .logoText {
+    font-size: 18px;
+    margin-left: 8px;
+  }
+  
+  .navMenu {
+    gap: 8px;
+  }
+  
+  .navItem, .navItemActive {
+    font-size: 12px;
+    padding: 4px 6px;
+  }
+  
+  .navIcon {
+    font-size: 14px;
+  }
+  
+  .searchContainer {
+    margin: 0 8px;
+  }
+  
+  .searchInput {
+    width: 120px;
+    font-size: 12px;
+  }
+  
+  .headerIcons {
+    gap: 12px;
+  }
+  
+  .iconItem {
+    font-size: 16px;
+  }
+  
+  .userAvatar {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .userIcon {
+    font-size: 16px;
+  }
+  
+  .mainContent {
+    padding: 12px;
+  }
+  
+  .bannerLeft {
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+  }
+  
+  .bannerContent {
+    align-items: center;
+    text-align: center;
+  }
+  
+  .bannerTitle {
+    font-size: 16px;
+  }
+  
+  .bannerSubtitle {
+    font-size: 24px;
+  }
+  
+  .bannerDescription {
+    font-size: 16px;
+  }
+  
+  .qrCode {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .qrCodeText {
+    font-size: 12px;
+  }
+  
+  .bannerMainTitle {
+    font-size: 24px;
+    text-align: center;
+  }
+  
+  .bannerMainSubtitle {
+    font-size: 16px;
+    text-align: center;
+  }
+  
+  .bannerPointer {
+    align-self: center;
+  }
+  
+  .recommendedCourses, .hotLiveSection {
+    padding: 20px 12px;
+  }
+  
+  .sectionTitle {
+    font-size: 18px;
+  }
+  
+  .courseList, .liveList {
+    grid-template-columns: 1fr;
+  }
+  
+  .courseContent {
+    padding: 16px;
+  }
+  
+  .courseTitle {
+    font-size: 16px;
+  }
+  
+  .liveContent {
+    padding: 12px;
+  }
+  
+  .liveTitle {
+    font-size: 14px;
+  }
+  
+  .liveTimeline {
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding-bottom: 10px;
+  }
+  
+  .timelineItem {
+    min-width: 100px;
+  }
+  
+  .timelineDate {
+    font-size: 12px;
+  }
+  
+  .floatingToolbar {
+    right: 8px;
+    top: auto;
+    bottom: 20px;
+    transform: none;
+    flex-direction: row;
+    width: calc(100% - 16px);
+    justify-content: center;
+  }
+  
+  .toolbarItem, .toolbarItemAI {
+    width: 52px;
+    height: 52px;
+  }
+}
